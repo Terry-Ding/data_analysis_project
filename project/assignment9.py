@@ -1,6 +1,6 @@
 import doctest
 from matplotlib import pyplot as plt
-fig = plt.figure(figsize=(20, 8), dpi = 90)
+fig = plt.figure(figsize=(20, 8), dpi = 99)
 
 # all 2 digit years assumed to be in the 2000s
 START_YEAR = 2000
