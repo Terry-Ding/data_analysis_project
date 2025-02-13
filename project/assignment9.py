@@ -1,6 +1,6 @@
 import doctest
 from matplotlib import pyplot as plt
-fig = plt.figure(figsize=(20, 8), dpi = 88)
+fig = plt.figure(figsize=(20, 8), dpi = 90)
 
 # all 2 digit years assumed to be in the 2000s
 START_YEAR = 2000
@@ -231,6 +231,21 @@ def read_file(filename: str) -> (dict[str, Date],
         id_title[sid] = contents[INPUT_TITLE]
     
     return (id_date, id_name, category_id, id_title)
+
+def drawPic(filename: str):
+    id_date, id_name, category_id, id_title = read_file(filename)
+    id_li = []
+    date_li = []
+    for key in id_date:
+        id_li.append(key)
+        date_li.append(id_date[key])
+    plt.xlabel("id")
+    plt.ylabel("date")
+    plt.plot(id_li,date_li)
+    plt.show()
+
+drawPic("data_analysis_project/project/assignment9/11lines_data.csv")
+
 
 def is_before_date(date: Date, given_date: Date) -> bool:
     '''
