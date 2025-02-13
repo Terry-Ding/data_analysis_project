@@ -1,2 +1,2 @@
 # data_analysis_project
-python project
+- this is my personal project
