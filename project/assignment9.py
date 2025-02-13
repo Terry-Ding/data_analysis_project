@@ -239,9 +239,9 @@ def drawPic(filename: str):
     for key in id_date:
         id_li.append(key)
         date_li.append(id_date[key])
-    plt.xlabel("id")
-    plt.ylabel("date")
-    plt.plot(id_li,date_li)
+    # plt.xlabel("id")
+    # plt.ylabel("date")
+    plt.bar(id_li,date_li)
     plt.show()
 
 drawPic("data_analysis_project/project/assignment9/11lines_data.csv")
