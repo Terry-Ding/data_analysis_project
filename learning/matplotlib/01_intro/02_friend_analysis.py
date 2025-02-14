@@ -18,6 +18,7 @@ def analysis():
 
     plt.xlabel("age")
     plt.ylabel("number")
+    plt.title("num of friends")
     plt.xticks(range(11, 31), rotation = 45)
     plt.yticks(range(min(a), max(a) + 1), rotation = 45)
 
@@ -25,7 +26,7 @@ def analysis():
     plt.grid(alpha = 0.3) # alpha 透明度
 
     # 添加图例
-    plt.legend()
+    plt.legend(loc = "upper left")
 
     plt.savefig("data_analysis_project/learning/matplotlib/02_friend.png")
     plt.show()
