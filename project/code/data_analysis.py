@@ -9,7 +9,7 @@ def read_file(file_name: str):
 def sort_li(li: list[int]) -> list[int]:
     for i in range(len(li)):
         for j in range(len(li) - i - 1):
-            if li[j] > li[j + 1]:
+            if li[j] < li[j + 1]:
                 temp = li[j + 1]
                 li[j + 1] = li[j]
                 li[j] = temp
@@ -36,7 +36,7 @@ def director_percentage_pie(file_name: str) -> None:
         count.append(director_dict[person])
 
     sorted_count = sort_li(count)
-    count = sorted_count[-10:]
+    count = sorted_count[10:0:-1]
     
     top_ten = []
     for person in director_dict:
