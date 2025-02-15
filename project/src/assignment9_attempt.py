@@ -61,4 +61,4 @@ def director_percentage_pie(file_name: str) -> None:
 
     plt.show()
     
-director_percentage_pie("data_analysis_project/project/src/large_data.csv")
+director_percentage_pie("data_analysis_project/project/csv_file/uvic/large_data.csv")
