@@ -19,6 +19,12 @@ def read_file(filename: str):
     new_df = new_df.drop_duplicates()
     # print("total duplicated values: ", end = "")
     # print(new_df.duplicated().sum())
+    new_df["discounted_price"] = new_df["discounted_price"].str.strip("₹").str.replace(",", "").astype(float)
+    new_df["actual_price"] = new_df["actual_price"].str.strip("₹").str.replace(",", "").astype(float)
+    new_df["discount_percentage"] = new_df["discount_percentage"].str.strip("%").astype(float)
+    # print(new_df["discounted_price"])
+    # print(new_df["actual_price"])
+    # print(new_df["discount_percentage"])
 
     return new_df
 
@@ -87,4 +93,8 @@ def category_sale_analysis(filename: str) -> None:
     plt.grid(alpha = 0.3)
     plt.show()
 
-category_sale_analysis(FILE_NAME)
+def main():
+    category_sale_analysis(FILE_NAME)
+
+if __name__ == "__main__":
+    main()
