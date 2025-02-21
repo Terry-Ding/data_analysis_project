@@ -10,15 +10,15 @@ def read_file(filename: str):
 
     original_df = pd.read_csv(filename)
     new_df = original_df.copy()
-    print(new_df[:].isnull().sum()) 
+    # print(new_df[:].isnull().sum()) 
     # rating count is null, fillna 0
     new_df["rating_count"] = new_df["rating_count"].fillna(0)
-    print("*" * 50)
-    print("total null values: ", end = "")
-    print((new_df[:].isnull().sum()).sum())
+    # print("*" * 50)
+    # print("total null values: ", end = "")
+    # print((new_df[:].isnull().sum()).sum())
     new_df = new_df.drop_duplicates()
-    print("total duplicated values: ", end = "")
-    print(new_df.duplicated().sum())
+    # print("total duplicated values: ", end = "")
+    # print(new_df.duplicated().sum())
 
     return new_df
 
