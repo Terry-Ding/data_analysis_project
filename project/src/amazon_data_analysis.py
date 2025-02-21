@@ -19,14 +19,25 @@ def read_file(filename: str):
     new_df = new_df.drop_duplicates()
     # print("total duplicated values: ", end = "")
     # print(new_df.duplicated().sum())
-    new_df["discounted_price"] = new_df["discounted_price"].str.strip("₹").str.replace(",", "").astype(float)
+    new_df["about_product"] = new_df["about_product"].str.split("|")
     new_df["actual_price"] = new_df["actual_price"].str.strip("₹").str.replace(",", "").astype(float)
+    new_df["category"] = new_df["category"].str.split("|")
+    new_df["discounted_price"] = new_df["discounted_price"].str.strip("₹").str.replace(",", "").astype(float)
     new_df["discount_percentage"] = new_df["discount_percentage"].str.strip("%").astype(float)
     new_df["rating_count"] = new_df["rating_count"].str.replace(",", "").astype(int)
+    new_df["review_id"] = new_df["review_id"].str.split(",")
+    new_df["user_id"] = new_df["user_id"].str.split(",")
+    new_df["user_name"] = new_df["user_name"].str.split(",")
+    
     # print(new_df["discounted_price"])
     # print(new_df["actual_price"])
     # print(new_df["discount_percentage"])
     # print(new_df["rating_count"])
+    # print(new_df["category"])
+    # print(new_df["about_product"])
+    # print(new_df["user_id"])
+    # print(new_df["user_name"])
+    # print(new_df["review_id"])
 
     return new_df
 
@@ -50,7 +61,7 @@ def category_sale_analysis(filename: str) -> None:
     """
 
     df = read_file(filename)
-    category_li1 = df["category"].str.split("|").tolist()
+    category_li1 = df["category"]
     category_li2 = []
     for i in category_li1:
         for j in i:
@@ -93,12 +104,12 @@ def category_sale_analysis(filename: str) -> None:
     ax2.barh(labels, sizes, color = mycolor)
     fig.suptitle('Sales analysis of the top ten categories', fontsize = 25)
     plt.grid(alpha = 0.3)
-    plt.show()
 
 def main():
-    # test_read = read_file(FILE_NAME)
-    # print(test_read)
+    test_read = read_file(FILE_NAME)
+    print(test_read)
     category_sale_analysis(FILE_NAME)
+    # plt.show()
 
 if __name__ == "__main__":
     main()
