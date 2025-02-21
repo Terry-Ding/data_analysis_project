@@ -12,7 +12,7 @@ def read_file(filename: str):
     new_df = original_df.copy()
     # print(new_df[:].isnull().sum()) 
     # rating count is null, fillna 0
-    new_df["rating_count"] = new_df["rating_count"].fillna(0)
+    new_df["rating_count"] = new_df["rating_count"].fillna("0")
     # print("*" * 50)
     # print("total null values: ", end = "")
     # print((new_df[:].isnull().sum()).sum())
@@ -22,9 +22,11 @@ def read_file(filename: str):
     new_df["discounted_price"] = new_df["discounted_price"].str.strip("₹").str.replace(",", "").astype(float)
     new_df["actual_price"] = new_df["actual_price"].str.strip("₹").str.replace(",", "").astype(float)
     new_df["discount_percentage"] = new_df["discount_percentage"].str.strip("%").astype(float)
+    new_df["rating_count"] = new_df["rating_count"].str.replace(",", "").astype(int)
     # print(new_df["discounted_price"])
     # print(new_df["actual_price"])
     # print(new_df["discount_percentage"])
+    # print(new_df["rating_count"])
 
     return new_df
 
@@ -94,6 +96,8 @@ def category_sale_analysis(filename: str) -> None:
     plt.show()
 
 def main():
+    # test_read = read_file(FILE_NAME)
+    # print(test_read)
     category_sale_analysis(FILE_NAME)
 
 if __name__ == "__main__":
